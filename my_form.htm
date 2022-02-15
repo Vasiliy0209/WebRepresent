@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Форма регистрации пользователя</title>
+		<script type="text/javascript" src="jquery-3.6.0.min.js"></script>
+		<script type="text/javascript">
+			$(function(){
+				$("#btn_Go").click(function(){
+					var name=$("#tb_Name").val();
+					var work=$("#tb_Work").val();
+					var languages0="";
+					$("#tb_Language option:selected").each(function(idx,item){
+							//alert(item);
+							languages0+=$(item).val()+" ";
+					});
+						
+					var languages="";
+					$(".mycheckbox:checked").each(function(idx,item){							
+							languages+=$(item).val()+" ";
+					});
+					var rb_day=$(".rb_day:checked").val();
+					var tx_info=$("#tx_info").val();
+					
+					var message=" Имя: ["+name+"]\n Вид занятости: ["+work+"] \n Знание языков: ["+languages0+"]\n Знание языков программирования: ["+languages+"]\n Рабочий день: ["+rb_day+"]\n Дополнительная информация: ["+tx_info+"]";
+					
+					alert(message);
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<form>
+		Имя:<br/>
+		<input id="tb_Name" type="text" size="10"/><br/>
+		Вид занятости:<br/>
+		<select id="tb_Work">
+			<option value="Безработный">Безработный</option>
+			<option value="Студент">Студент</option>
+			<option value="Работающий">Работающий</option>
+		</select><br/>
+		Знание языков: <br/>
+		<select id="tb_Language" multiple>
+			<option value="Русский">Русский</option>
+			<option value="Английский">Английский</option>
+			<option value="Французский">Французский</option>
+		</select><br/>
+		Знание языков программирования:<br/>
+		<input class="mycheckbox" id="cb1" type="checkbox" value="С"><label for="cb1">С</label><br/>
+		<input class="mycheckbox" id="cb2" type="checkbox" value="С++"><label for="cb2">С++</label><br/>
+		<input class="mycheckbox" id="cb3" type="checkbox" value="С#">С#<br/>
+		<input class="mycheckbox" id="cb4" type="checkbox" value="PHP">PHP<br/>
+		Рабочий день:<br/>
+		<input class="rb_day" name="rb_day" type="radio" value="Полный">Полный<br/>
+		<input class="rb_day" name="rb_day" type="radio" value="Неполный">Неполный<br/>
+		Дополнительная информация: <br/>
+		<textarea id="tx_info" rows="10" cols="50"></textarea><br/>
+		<input id="btn_Go" type="submit" value="Зарегистрировать"/>
+		<input type="reset" value="Очистить"/>
+		</form>
+	</body>
+</html>
